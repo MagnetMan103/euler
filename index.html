@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Euler's Method Calculator</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image" href="/euler.jpeg" />
+
+</head>
+<body>
+<div id="inputs">
+<label>
+Enter Function <input type="text" id="input" value="y'=">
+</label>
+    <label>
+    y(<input type="text" id="tstart" value="">)= <input type="text" id="initial" value="">
+    </label>
+    <label>
+    end <input type="text" id="final" value="">
+    </label>
+    <label>
+    h(step size)= <input type="text" id="step" value="">
+    </label>
+    <label>
+    <button id="submit">Submit</button>
+    </label>
+</div>
+<div id="data">
+    <table id="myTable">
+        <tr>
+            <th>step</th>
+            <th>t</th>
+            <th>y</th>
+        </tr>
+    </table>
+</div>
+<p id="debug"></p>
+</body>
+<script src="app.js"></script>
+</html>
