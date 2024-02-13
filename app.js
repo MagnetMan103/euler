@@ -40,13 +40,11 @@ function onClick() {
 function getValues(equation) {
     let eq = replace(equation, '*(y)', 'y')
     eq = replace(eq, '*(t)', 't')
-    console.log(eq)
     eq = fixMultiply(eq)
-    console.log(eq)
     eq = replace(eq, '**', '^')
-    console.log(eq)
+    eq = fixExponents(eq)
 
-    while (t !== parseFloat(end.value) && stepNum < 500) {
+    while (t !== parseFloat(end.value) && stepNum < 250) {
         const next = replace(replace(eq, y, 'y'), t, 't');
         console.log(next, y, t)
         // debug.textContent = eval(next);
@@ -97,6 +95,23 @@ function fixMultiply(equation) {
     return newEq
 }
 
+function fixExponents(equation) {
+    // 5**1*(y)
+    let newEq = ''
+    for (let i = 0; i < equation.length; i ++) {
+        if (isLetter(equation[i]) && i !== 0) {
+            const adjusted = `(${equation.slice(i-3, i - 1)}${equation[i]}`
+            newEq = newEq.slice(0, i - 3) + adjusted
+        }
+        else {newEq += equation[i]}
+    }
+    return newEq
+}
+
 function isNumerical(char) {
     return char >= '0' && char <= '9';
+}
+
+function isLetter(str) {
+    return str.length === 1 && str.match(/[a-z]/i);
 }
