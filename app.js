@@ -46,7 +46,7 @@ function getValues(equation) {
     eq = replace(eq, '**', '^')
     console.log(eq)
 
-    while (t !== parseFloat(end.value) && stepNum < 50) {
+    while (t !== parseFloat(end.value) && stepNum < 500) {
         const next = replace(replace(eq, y, 'y'), t, 't');
         console.log(next, y, t)
         // debug.textContent = eval(next);
